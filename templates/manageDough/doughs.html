@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Manage Doughs
+  Manage {{ VARS.product }}
 {% endblock title %}
 
 {% block body %}
 <div class="d-flex justify-content-center mt-5">
-    <h3>Dough Dashboard</h3>
+    <h3>{{ VARS.product }} Dashboard</h3>
 </div>
 <div class="row mt-3">
     <div class="mx-auto">
         <div class="d-flex align-items-center justify-content-evenly flex-wrap btn-group">
             <a href="{% url 'make_purchases' %}" class="btn_bg px-1 btn btn-secondary shadow m-3">Add Purchases</a>
             <button class="btn_bg px-1 btn btn-secondary shadow m-3">Manage Recepies</button>
-            <button class="btn_bg px-1 btn btn-secondary shadow m-3">Manage Doughs</button>
+            <button class="btn_bg px-1 btn btn-secondary shadow m-3">Manage {{ VARS.product }}</button>
             <button class="btn_bg px-1 btn btn-secondary shadow m-3">Manage Raw Inventory</button>
         </div>
     </div>
 </div>
 <div class="mt-5 d-flex flex-column justify-content-center mx-3">
     <div class="d-flex justify-content-center">
-        <h4>Active Doughs</h4>
+        <h4>Active {{ VARS.product }}</h4>
     </div>
-    <table class="table table-dark table-striped">
+    <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>

@@ -1,23 +1,44 @@
+:root{
+    --main-color: #C8ad91;
+    --secodary-color: #725440;
+    --button-color: #503b2d;
+    --text-color: white;
+    --accent-color-one: rgb(233, 213, 197);
+    --accent-color-two: rgba(197, 178, 156, 0.79);
+}
+
 .second_bg{
-    background-color: #725440 !important;
-    color: white !important;
+    background-color: var(--secodary-color) !important;
+    color: var(--text-color) !important;
 }
 
 .nav-link{
-    color: white !important;
+    color: var(--text-color) !important;
 }
 
 .navbar-brand{
-    color: white !important;
+    color: var(--text-color) !important;
 }
 
 .navbar-toggler-icon{
-    color: white;
+    color: var(--text-color);
+}
+
+thead tr{
+    background-color: var(--secodary-color);
+}
+
+tbody tr:nth-child(odd){
+    background-color: var(--accent-color-one) !important;
+}
+
+tbody tr:nth-child(even){
+    background-color: var(--accent-color-two) !important;
 }
 
 .btn_bg{
-    background-color: #503b2d !important;
-    color: white;
+    background-color: var(--button-color) !important;
+    color: var(--text-color);
     border: black 1px solid;
     border-radius: 50px !important;
 }

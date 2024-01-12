@@ -1,0 +1,23 @@
+.second_bg{
+    background-color: #725440 !important;
+    color: white !important;
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.navbar-brand{
+    color: white !important;
+}
+
+.navbar-toggler-icon{
+    color: white;
+}
+
+.btn_bg{
+    background-color: #503b2d !important;
+    color: white;
+    border: black 1px solid;
+    border-radius: 50px !important;
+}

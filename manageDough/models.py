@@ -39,3 +39,4 @@ class Dough(models.Model):
     qty = models.FloatField()
     date_made = models.DateField(auto_now=True)
     price_per_scoop = models.FloatField()
+    active = models.BooleanField(default=True)

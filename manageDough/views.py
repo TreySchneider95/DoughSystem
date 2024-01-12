@@ -6,3 +6,8 @@ from django.views.generic import View
 class DoughView(View):
     def get(self, request):
         return render(request, 'manageDough/doughs.html')
+    
+
+class MakePurchases(View):
+    def get(self, request):
+        return render(request, 'manageDough/make_purchases.html')

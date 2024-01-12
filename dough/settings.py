@@ -56,6 +56,8 @@ ROOT_URLCONF = 'dough.urls'
 
 LOGIN_URL = 'login'
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

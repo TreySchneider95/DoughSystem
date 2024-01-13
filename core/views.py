@@ -1,9 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.views.generic import View
-from .forms import PrettyAuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from dough import settings
 
 # Create your views here.
 

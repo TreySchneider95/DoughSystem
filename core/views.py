@@ -19,8 +19,8 @@ class LoginView(View):
     """
     def post(self, request):
         # Get username and password
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
         # django's built in authenticate function returns a user if exists else None
         user = authenticate(username=username, password=password)
         if user is not None:
@@ -34,7 +34,7 @@ class LoginView(View):
         else:
             # Error message to be displayed on screen
             request.session['login_error'] = 'Username or password is incorect.'
-            return redirect('login')
+            return render(request, 'core/login.html')
     def get(self, request):
         return render(request, "core/login.html")
     

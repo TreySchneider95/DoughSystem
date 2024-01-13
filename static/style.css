@@ -26,6 +26,7 @@
 
 thead tr{
     background-color: var(--secodary-color);
+    color: var(--text-color);
 }
 
 tbody tr:nth-child(odd){

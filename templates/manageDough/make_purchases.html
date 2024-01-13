@@ -10,16 +10,18 @@
         <div class="d-flex justify-content-center p-3">
             <h3>Add new Purchase</h3>
         </div>
-        <form>
+        <form method="post">
+          {% csrf_token %}
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
               <div class="col">
                 <div data-mdb-input-init class="form-outline">
-                    <select name="product" required class="form-select" aria-label="Default select example">
+                    <select id="product_select" name="product" required class="form-select" aria-label="Default select example">
                         <option disabled selected value>Select a product</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        {% for product in context.products %}
+                          <option value="{{ product.pk }}">{{ product.name }}</option>
+                        {% endfor %}
+                        <option value="null">Other</option>
                       </select>
                     <label class="form-label" for="date">Product</label>
                 </div>
@@ -31,13 +33,21 @@
                 </div>
               </div>
             </div>
-    
+            <div style="display: none;" id="product_name_input" class="row mb-4">
+              <div class="col">
+                <div class="form-outline">
+                  <input id="product_name" type="text" class="form-control" name="product_name">
+                  <label class="form-label" for="date">Product Name</label>
+                </div>
+              </div>
+              <div class="col"><div class="form-outline"></div></div>
+            </div>
             <div class="row mb-4">
                 <div class="col">
                   <div data-mdb-input-init class="form-outline">
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input name="price" type="number" class="form-control">
+                        <input required name="price" type="number" class="form-control" step=".01">
                     </div>
                     <label class="form-label" for="date">Price</label>
                   </div>
@@ -53,23 +63,23 @@
               <div class="row mb-4">
                 <div class="col">
                   <div data-mdb-input-init class="form-outline">
-                      <input class="form-control" type="number" name="qty" id="">
+                      <input required class="form-control" type="number" name="qty" id="">
                       <label class="form-label" for="date">Quantity</label>
                   </div>
                 </div>
                 <div class="col">
-                    <select name="product" required class="form-select" aria-label="Default select example">
+                    <select name="unit" required class="form-select" aria-label="Default select example">
                         <option disabled selected value>Select Unit</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        {% for unit in context.units %}
+                          <option value="{{ unit.pk }}">{{ unit.unit }}</option>
+                        {% endfor %}
                       </select>
                     <label class="form-label" for="date">Units</label>
                 </div>
               </div>
     
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input name="refrigerated" class="form-check-input" type="checkbox" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                   Is this product refrigerated?
                 </label>
@@ -81,4 +91,21 @@
           </form>
     </div>
 </div>
+<script>
+  const addInput = ()=>{
+    $("#product_name_input").show()
+    $("#product_name").prop('required',true)
+  }
+  const hideInput = ()=>{
+      $("#product_name_input").hide()
+      $("#product_name").prop('required',false)
+  }
+  $("#product_select").on('change', function(){
+    if($("#product_select option:selected").text() == "Other"){
+      addInput()
+    }else{
+      hideInput()
+    }
+  })
+</script>
 {% endblock body %}

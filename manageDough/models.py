@@ -5,9 +5,12 @@ from django.contrib.auth.models import User
 class Unit(models.Model):
     unit = models.CharField(max_length=200)
 
+    def __str__(self) -> str:
+        return f"{self.unit}"
+
 class InventoryRaw(models.Model):
     name = models.CharField(max_length=200)
-    qty = models.FloatField()
+    qty = models.FloatField(default=0)
     unit_used = models.ForeignKey(Unit, on_delete=models.CASCADE)
 
 class Purchase(models.Model):

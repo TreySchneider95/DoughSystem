@@ -6,7 +6,6 @@ from pint import UnitRegistry
 
 ureg = UnitRegistry(system="US")
 
-print(ureg.get_compatible_units("pounds"))
 
 # Create your views here.
 

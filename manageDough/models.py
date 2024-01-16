@@ -13,6 +13,9 @@ class InventoryRaw(models.Model):
     qty = models.FloatField(default=0)
     unit_used = models.ForeignKey(Unit, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.name}"
+
 class Purchase(models.Model):
     date_purchased = models.DateField()
     price = models.FloatField()
@@ -43,3 +46,11 @@ class Dough(models.Model):
     date_made = models.DateField(auto_now=True)
     price_per_scoop = models.FloatField()
     active = models.BooleanField(default=True)
+
+class Calcs(models.Model):
+    one_to_convert = models.ForeignKey(Unit, on_delete=models.CASCADE, related_name="one_to_convert")
+    base = models.ForeignKey(Unit, on_delete=models.CASCADE, related_name="base")
+    conversion = models.FloatField()
+
+    def __str__(self):
+        return f"{self.one_to_convert.unit}s to {self.base.unit}s"

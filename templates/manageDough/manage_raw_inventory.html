@@ -7,13 +7,17 @@
 {% block body %}
 <div class="d-flex justify-content-center flex-column m-5">
     <h1>Raw Inventory</h1>
-    <ul class="second_bg list-group list-group-flush">
+    <ul class="second_bg list-group list-group-flush rounded">
         {% for product in products %}
-            <li class="second_bg list-group-item">{{ product.name }}:
-                <div class="progress mt-2">
+            <li class="second_bg list-group-item">{{ product.name }} in {{ product.unit_used.unit }}s:
+                <div class="progress my-2">
+                    <!-- @ts-ignore -->
                     <div class="progress-bar accent_color_three_dark" role="progressbar" style="width: {{ product.total_percent }}%" aria-valuenow="product.total_left" aria-valuemin="0" aria-valuemax="{{ product.total_purchased }}"></div>
                 </div>
 
+                <div class="d-flex flex-row-reverse">
+                    <button class="btn_bg px-2 py-0 m-2 btn btn-secondary shadow">Edit product</button>
+                </div>
             </li>
           
         {% endfor %}

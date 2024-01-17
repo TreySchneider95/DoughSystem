@@ -15,17 +15,21 @@ class InventoryRaw(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    
+    def take_inventory(self, qty, unit):
+        purchase_to_take_from = self.purchases.filter(qty_left__gt = 0).latest('date_purchased')
 
 class Purchase(models.Model):
     date_purchased = models.DateField()
     price = models.FloatField()
     where = models.CharField(max_length=200)
-    product = models.ForeignKey(InventoryRaw, on_delete=models.CASCADE)
+    product = models.ForeignKey(InventoryRaw, on_delete=models.CASCADE, related_name="purchases")
     qty_purchased = models.FloatField()
     qty_left = models.FloatField()
     refrigerated = models.BooleanField()
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     person_who_purchased = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
 class RecipeIngrediant(models.Model):
     recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)

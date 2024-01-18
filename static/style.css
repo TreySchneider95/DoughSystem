@@ -2,7 +2,8 @@
     --main-color: #C8ad91;
     --secodary-color: #725440;
     --button-color: #503b2d;
-    --text-color: white;
+    --main-text-color: white;
+    --secondary-text-color: black;
     --accent-color-one: rgb(233, 213, 197);
     --accent-color-two: rgba(197, 178, 156, 0.79);
     --accent-color-three-dark: black;
@@ -10,24 +11,24 @@
 
 .second_bg{
     background-color: var(--secodary-color) !important;
-    color: var(--text-color) !important;
+    color: var(--main-text-color) !important;
 }
 
 .nav-link{
-    color: var(--text-color) !important;
+    color: var(--main-text-color) !important;
 }
 
 .navbar-brand{
-    color: var(--text-color) !important;
+    color: var(--main-text-color) !important;
 }
 
 .navbar-toggler-icon{
-    color: var(--text-color);
+    color: var(--main-text-color);
 }
 
 thead tr{
     background-color: var(--secodary-color);
-    color: var(--text-color);
+    color: var(--main-text-color);
 }
 
 tbody tr:nth-child(odd){
@@ -52,7 +53,11 @@ tbody tr:nth-child(even){
 
 .btn_bg{
     background-color: var(--button-color) !important;
-    color: var(--text-color);
+    color: var(--main-text-color);
     border: black 1px solid;
     border-radius: 50px !important;
+}
+
+.secondary_text_color{
+    color: var(--secondary-text-color) !important;
 }

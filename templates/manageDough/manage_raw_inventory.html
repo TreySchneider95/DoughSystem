@@ -11,8 +11,19 @@
         {% for product in products %}
             <li class="second_bg list-group-item">{{ product.name }} in {{ product.unit_used.unit }}s:
                 <div class="progress my-2">
-                    <!-- @ts-ignore -->
-                    <div class="progress-bar accent_color_three_dark" role="progressbar" style="width: {{ product.total_percent }}%" aria-valuenow="product.total_left" aria-valuemin="0" aria-valuemax="{{ product.total_purchased }}"></div>
+                    <div class="progress-bar accent_color_three_dark" role="progressbar" style="width: {{ product.total_percent }}%" aria-valuenow="product.total_left" aria-valuemin="0" aria-valuemax="{{ product.total_purchased }}">
+                        {% if product.total_percent >= 20 %}
+                            About {{ product.qty }} {{ product.unit_used.unit }}s
+                        </div>
+                        {% else %}
+                        </div>
+                        <div class="secondary_text_color ps-4">
+                            About {{ product.qty }} {{ product.unit_used.unit }}s
+                        </div>
+                        {% endif %}
+
+
+
                 </div>
 
                 <div class="d-flex flex-row-reverse">

@@ -57,5 +57,6 @@ class ManageRawInventory(View):
                 total_left = sum([purchase.qty_left for purchase in active_purchases])
                 product.total_purchased = total_purchased
                 product.total_left = total_left
-                product.total_percent = (total_left/total_purchased) * 100
+                # product.total_percent = (total_left/total_purchased) * 100
+                product.total_percent = 19
         return render(request, 'manageDough/manage_raw_inventory.html', {'products': products})
